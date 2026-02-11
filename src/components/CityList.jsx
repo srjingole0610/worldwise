@@ -11,13 +11,16 @@ function CityList({ cities, isLoading }) {
     return (
         <ul className={styles.cityList}>
             {cities.map((city) => {
-                <CityItem city={city} key={city.id} />
+                return <CityItem city={city} key={city.id} />
             })}
         </ul>
     )
 }
 
-
+CityList.defaultProps = {
+    cities: [],
+    isLoading: false,
+};
 CityList.propTypes = {
     cities: PropTypes.array,
     isLoading: PropTypes.bool,
