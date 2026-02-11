@@ -3,7 +3,6 @@ import styles from './CityList.module.css'
 import Spinner from './Spinner'
 import Message from './Message'
 
-import PropTypes from 'prop-types'
 function CityList({ cities, isLoading }) {
     if (isLoading) return <Spinner />
 
@@ -16,15 +15,6 @@ function CityList({ cities, isLoading }) {
         </ul>
     )
 }
-
-CityList.defaultProps = {
-    cities: [],
-    isLoading: false,
-};
-CityList.propTypes = {
-    cities: PropTypes.array,
-    isLoading: PropTypes.bool,
-};
 
 export default CityList;
 
