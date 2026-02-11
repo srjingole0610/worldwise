@@ -1,8 +1,19 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Homepage from "./pages/Homepage.jsx"
+import Pricing from "./pages/Pricing.jsx"
+import Product from "./pages/Product.jsx"
+import PageNotFound from "./pages/PageNotFound.jsx"
+
 function App() {
   return (
-    <div>
-      <h1>Worldwise</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/product" element={<Product />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
