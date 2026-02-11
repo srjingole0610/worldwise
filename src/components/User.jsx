@@ -1,5 +1,6 @@
 import styles from "./User.module.css";
 
+//Never do this in Development or Production Env. Just addded for learning purpose.
 const FAKE_USER = {
   name: "Jack",
   email: "jack@example.com",
@@ -10,7 +11,7 @@ const FAKE_USER = {
 function User() {
   const user = FAKE_USER;
 
-  function handleClick() {}
+  function handleClick() { }
 
   return (
     <div className={styles.user}>
