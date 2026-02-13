@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { useState } from "react";
 import { getFlagImageUrl } from "../utils/flags";
 import { Link } from 'react-router-dom';
+import { useCities } from '../contexts/CitiesContext';
 
 const formatDate = (date) =>
     new Intl.DateTimeFormat("en", {
@@ -12,6 +13,7 @@ const formatDate = (date) =>
     }).format(new Date(date));
 
 function CityItem({ city }) {
+    const { currentCity } = useCities();
     const { cityName, emoji, date, id, position } = city;
     const [showEmojiFallback, setShowEmojiFallback] = useState(false);
     const flagSrc = getFlagImageUrl(emoji);
@@ -20,7 +22,7 @@ function CityItem({ city }) {
 
     return (
         <li >
-            <Link className={styles.cityItem} to={`${id}?lat=${lat}&lng=${lng}`}>
+            <Link className={`${styles.cityItem} ${currentCity.id === id ? styles['cityItem--active'] : ''}`} to={`${id}?lat=${lat}&lng=${lng}`}>
                 {!showEmojiFallback && flagSrc ? (
                     <img
                         className={styles.flag}
