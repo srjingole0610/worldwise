@@ -6,8 +6,6 @@ import { getFlagImageUrl } from "../utils/flags";
 import Spinner from "./Spinner";
 import BackButton from "./BackButton";
 
-
-
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
     day: "numeric",
@@ -21,12 +19,11 @@ function City() {
   const { getCity, currentCity, isLoading } = useCities();
   const [showEmojiFallback, setShowEmojiFallback] = useState(false);
 
-
   useEffect(() => {
-    getCity(id)
-  }, [id])
+    getCity(id);
+  }, [id, getCity]);
 
-  if (isLoading) return <Spinner />
+  if (isLoading) return <Spinner />;
   const { cityName, emoji, date, notes } = currentCity;
   const flagSrc = getFlagImageUrl(emoji);
 
@@ -40,7 +37,7 @@ function City() {
               className={styles.flag}
               src={flagSrc}
               alt={`${cityName} flag`}
-              loading="lazy"
+              loading='lazy'
               onError={() => setShowEmojiFallback(true)}
             />
           ) : (
@@ -66,8 +63,8 @@ function City() {
         <h6>Learn more</h6>
         <a
           href={`https://en.wikipedia.org/wiki/${cityName}`}
-          target="_blank"
-          rel="noreferrer"
+          target='_blank'
+          rel='noreferrer'
         >
           Check out {cityName} on Wikipedia &rarr;
         </a>
