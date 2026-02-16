@@ -35,6 +35,78 @@
         "lng": 13.376933665713324
       },
       "id": 98443197
+    },
+    {
+      "cityName": "Pune",
+      "country": "India",
+      "emoji": "🇮🇳",
+      "date": "2026-02-16T08:52:39.625Z",
+      "notes": "TEST",
+      "position": {
+        "lat": "18.520144244236807",
+        "lng": "73.85611844775816"
+      },
+      "id": 98443198
+    },
+    {
+      "cityName": "Parla",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2026-02-16T08:55:09.898Z",
+      "notes": "Great CIty",
+      "position": {
+        "lat": "40.237611110881346",
+        "lng": "-3.7549735403738898"
+      },
+      "id": 98443199
+    },
+    {
+      "cityName": "Vila de Rei",
+      "country": "Portugal",
+      "emoji": "🇵🇹",
+      "date": "2026-02-16T08:57:36.674Z",
+      "notes": "Hurray",
+      "position": {
+        "lat": "39.648033342629894",
+        "lng": "-8.174718072370837"
+      },
+      "id": 98443200
+    },
+    {
+      "cityName": "Marseille",
+      "country": "France",
+      "emoji": "🇫🇷",
+      "date": "2026-02-16T08:58:14.199Z",
+      "notes": "French football club",
+      "position": {
+        "lat": "43.301202322825304",
+        "lng": "5.5022935021799935"
+      },
+      "id": 98443201
+    },
+    {
+      "cityName": "Girona",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2026-02-16T09:01:42.813Z",
+      "notes": "Test",
+      "position": {
+        "lat": "41.98399433605362",
+        "lng": "2.8668265704280946"
+      },
+      "id": 98443202
+    },
+    {
+      "cityName": "Zagreb",
+      "country": "Croatia",
+      "emoji": "🇭🇷",
+      "date": "2026-02-16T09:03:31.873Z",
+      "notes": "TEST",
+      "position": {
+        "lat": "45.819202964959146",
+        "lng": "16.033213236683032"
+      },
+      "id": 98443203
     }
   ]
 }
