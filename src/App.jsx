@@ -10,13 +10,13 @@ import CityList from "./components/CityList.jsx"
 import CountryList from "./components/CountryList.jsx"
 import City from "./components/City.jsx"
 import Form from "./components/Form.jsx"
-import { CititesProvider } from "./contexts/CitiesContext.jsx"
+import { CitiesProvider } from "./contexts/CitiesContext.jsx"
 
 const BASE_URL = 'http://localhost:8000'
 
 function App() {
   return (
-    <CititesProvider>
+    <CitiesProvider>
 
       <BrowserRouter>
         <Routes>
@@ -34,7 +34,7 @@ function App() {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
-    </CititesProvider>
+    </CitiesProvider>
   )
 }
 

@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import styles from "./Map.module.css";
 import { useCities } from "../contexts/CitiesContext";
 import { getFlagImageUrl } from "../utils/flags";
-import { use } from "react";
 
 function PopupFlag({ emoji, cityName }) {
     const [showEmojiFallback, setShowEmojiFallback] = useState(false);
@@ -28,7 +27,7 @@ function PopupFlag({ emoji, cityName }) {
 function Map() {
 
     const { cities } = useCities();
-    const [mapPostion, setMapPostion] = useState([
+    const [mapPostion, setMapPosition] = useState([
         40.46635901755316, -3.7133789062500004,
     ]);
     const [searchParams, setSearchParams] = useSearchParams();
@@ -37,7 +36,8 @@ function Map() {
 
     useEffect(() => {
         if (mapLat && mapLng) {
-            setMapPostion([mapLat, mapLng]);
+            setSearchParams({ lat: mapLat, lng: mapLng });
+            setMapPosition([mapLat, mapLng]);
         }
     }, [mapLat, mapLng]);
 

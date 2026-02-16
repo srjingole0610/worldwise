@@ -3,7 +3,7 @@ import { createContext, useState, useEffect, useContext } from "react";
 
 const CitiesContext = createContext();
 const BASE_URL = 'http://localhost:8000'
-function CititesProvider({ children }) {
+function CitiesProvider({ children }) {
     const [cities, setCities] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [currentCity, setCurrentCity] = useState({})
@@ -56,4 +56,4 @@ function useCities() {
 
 
 
-export { CititesProvider, useCities }
+export { CitiesProvider, useCities }
