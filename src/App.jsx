@@ -14,8 +14,6 @@ import { CitiesProvider } from "./contexts/CitiesContext.jsx";
 import { AuthProvider } from "./contexts/FakeAuthContext.jsx";
 import ProtectedRoute from "./pages/ProtectedRoute.jsx";
 
-const BASE_URL = "http://localhost:8000";
-
 function App() {
   return (
     <AuthProvider>

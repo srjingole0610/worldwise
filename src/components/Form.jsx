@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import Button from "./Button";
 import styles from "./Form.module.css";
@@ -11,7 +10,6 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useCities } from "../contexts/CitiesContext";
 
-
 const BASE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client";
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
@@ -22,7 +20,6 @@ export function convertToEmoji(countryCode) {
 }
 
 function Form() {
-
   const [mapLat, mapLng] = useUrlPosition();
   const navigate = useNavigate();
   const [cityName, setCityName] = useState("");
@@ -35,27 +32,26 @@ function Form() {
   const { createCity, isLoading } = useCities();
 
   useEffect(() => {
-
     if (!mapLat || !mapLng) return;
     async function fetchCityData() {
       try {
         setIsLoadingGeocoding(true);
         setGeoCodingError("");
-        const res = await fetch(`${BASE_URL}?latitude=${mapLat}&longitude=${mapLng}`)
+        const res = await fetch(
+          `${BASE_URL}?latitude=${mapLat}&longitude=${mapLng}`,
+        );
         const data = await res.json();
-        if (!data.countryCode) throw new Error("That does not seem to be a valid location. Please click somewhere else on the map.");
+        if (!data.countryCode)
+          throw new Error(
+            "That does not seem to be a valid location. Please click somewhere else on the map.",
+          );
         setCityName(data.city || data.locality || "");
         setCountry(data.countryName || data.country || "");
         setEmoji(convertToEmoji(data.countryCode));
-        console.log(data);
-
-      }
-      catch (e) {
+      } catch (e) {
         console.error(e);
         setGeoCodingError(e.message);
-
-      }
-      finally {
+      } finally {
         setIsLoadingGeocoding(false);
       }
     }
@@ -72,36 +68,35 @@ function Form() {
       date: date.toISOString(),
       notes,
       position: {
-        lat: mapLat,
-        lng: mapLng
-      }
+        lat: Number(mapLat),
+        lng: Number(mapLng),
+      },
     };
 
     await createCity(newCity);
     navigate("/app/cities");
-
   }
 
-  if (!mapLat && !mapLng) return <Message message="Start by clicking somewhere on the map" />;
+  if (!mapLat && !mapLng)
+    return <Message message='Start by clicking somewhere on the map' />;
 
   if (isLoadingGeocoding) {
-    return (
-      <Spinner />
-    );
+    return <Spinner />;
   }
 
   if (geoCodingError) {
-    return (
-      <Message message={geoCodingError} />
-    );
+    return <Message message={geoCodingError} />;
   }
 
   return (
-    <form className={`${styles.form} ${isLoading ? styles.loading : ""}`} onSubmit={handleSubmit}>
+    <form
+      className={`${styles.form} ${isLoading ? styles.loading : ""}`}
+      onSubmit={handleSubmit}
+    >
       <div className={styles.row}>
-        <label htmlFor="cityName">City name</label>
+        <label htmlFor='cityName'>City name</label>
         <input
-          id="cityName"
+          id='cityName'
           onChange={(e) => setCityName(e.target.value)}
           value={cityName}
         />
@@ -109,23 +104,27 @@ function Form() {
       </div>
 
       <div className={styles.row}>
-        <label htmlFor="date">When did you go to {cityName}?</label>
-        <DatePicker id="date" value={date} selected={date} onChange={(date) => setDate(date)} dateFormat={'dd/MM/yyyy'} />
+        <label htmlFor='date'>When did you go to {cityName}?</label>
+        <DatePicker
+          id='date'
+          selected={date}
+          onChange={(date) => setDate(date)}
+          dateFormat={"dd/MM/yyyy"}
+        />
       </div>
 
       <div className={styles.row}>
-        <label htmlFor="notes">Notes about your trip to {cityName}</label>
+        <label htmlFor='notes'>Notes about your trip to {cityName}</label>
         <textarea
-          id="notes"
+          id='notes'
           onChange={(e) => setNotes(e.target.value)}
           value={notes}
         />
       </div>
 
       <div className={styles.buttons}>
-        <Button type="primary">Add</Button>
+        <Button type='primary'>Add</Button>
         <BackButton />
-
       </div>
     </form>
   );

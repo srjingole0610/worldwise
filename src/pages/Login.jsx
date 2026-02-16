@@ -1,7 +1,7 @@
 import styles from "./Login.module.css";
 import { useEffect, useState } from "react";
 import PageNav from "../components/PageNav";
-import { useAuth, AuthProvider } from "../contexts/FakeAuthContext.jsx";
+import { useAuth } from "../contexts/FakeAuthContext.jsx";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 
