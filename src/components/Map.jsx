@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import styles from "./Map.module.css";
 import { useCities } from "../contexts/CitiesContext";
 import { getFlagImageUrl } from "../utils/flags";
+import useGeolocation from "../hooks/useGeolocation";
+import Button from "../components/Button";
+
 
 function PopupFlag({ emoji, cityName }) {
     const [showEmojiFallback, setShowEmojiFallback] = useState(false);
@@ -27,24 +30,38 @@ function PopupFlag({ emoji, cityName }) {
 function Map() {
 
     const { cities } = useCities();
+
     const [mapPostion, setMapPosition] = useState([
         40.46635901755316, -3.7133789062500004,
     ]);
     const [searchParams, setSearchParams] = useSearchParams();
+    const { isLoading: isLoadingPosition, position: geoLocationPosition, getPosition } = useGeolocation();
+
+
+
     const mapLat = searchParams.get("lat");
     const mapLng = searchParams.get("lng");
 
     useEffect(() => {
         if (mapLat && mapLng) {
-            setSearchParams({ lat: mapLat, lng: mapLng });
+            // setSearchParams({ lat: mapLat, lng: mapLng });
             setMapPosition([mapLat, mapLng]);
         }
     }, [mapLat, mapLng]);
+
+    useEffect(() => {
+        if (geoLocationPosition) {
+            setMapPosition([geoLocationPosition.lat, geoLocationPosition.lng]);
+        }
+    }, [geoLocationPosition])
 
     return (
         <div
             className={styles.mapContainer}
         >
+            {!geoLocationPosition && <Button type="position" onClick={getPosition}>
+                {isLoadingPosition ? "Loading..." : "Use your position"}
+            </Button>}
             <MapContainer
                 center={mapPostion}
                 // center={[mapLat, mapLng]}
