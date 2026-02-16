@@ -6,6 +6,7 @@ import { useCities } from "../contexts/CitiesContext";
 import { getFlagImageUrl } from "../utils/flags";
 import useGeolocation from "../hooks/useGeolocation";
 import Button from "../components/Button";
+import useUrlPosition from "../hooks/useUrlPosition";
 
 
 function PopupFlag({ emoji, cityName }) {
@@ -34,13 +35,8 @@ function Map() {
     const [mapPostion, setMapPosition] = useState([
         40.46635901755316, -3.7133789062500004,
     ]);
-    const [searchParams, setSearchParams] = useSearchParams();
     const { isLoading: isLoadingPosition, position: geoLocationPosition, getPosition } = useGeolocation();
-
-
-
-    const mapLat = searchParams.get("lat");
-    const mapLng = searchParams.get("lng");
+    const [mapLat, mapLng] = useUrlPosition();
 
     useEffect(() => {
         if (mapLat && mapLng) {
