@@ -49,30 +49,6 @@
       "id": 98443198
     },
     {
-      "cityName": "Parla",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2026-02-16T08:55:09.898Z",
-      "notes": "Great CIty",
-      "position": {
-        "lat": "40.237611110881346",
-        "lng": "-3.7549735403738898"
-      },
-      "id": 98443199
-    },
-    {
-      "cityName": "Vila de Rei",
-      "country": "Portugal",
-      "emoji": "🇵🇹",
-      "date": "2026-02-16T08:57:36.674Z",
-      "notes": "Hurray",
-      "position": {
-        "lat": "39.648033342629894",
-        "lng": "-8.174718072370837"
-      },
-      "id": 98443200
-    },
-    {
       "cityName": "Marseille",
       "country": "France",
       "emoji": "🇫🇷",
@@ -95,18 +71,6 @@
         "lng": "2.8668265704280946"
       },
       "id": 98443202
-    },
-    {
-      "cityName": "Zagreb",
-      "country": "Croatia",
-      "emoji": "🇭🇷",
-      "date": "2026-02-16T09:03:31.873Z",
-      "notes": "TEST",
-      "position": {
-        "lat": "45.819202964959146",
-        "lng": "16.033213236683032"
-      },
-      "id": 98443203
     }
   ]
 }
